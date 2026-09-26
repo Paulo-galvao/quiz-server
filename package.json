@@ -1,0 +1,36 @@
+{
+  "name": "quiz-server",
+  "version": "1.0.0",
+  "description": "No description yet",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/src/index.js",
+    "dev": "tsx watch src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulo-galvao/quiz-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Paulo-galvao/quiz-server/issues"
+  },
+  "homepage": "https://github.com/Paulo-galvao/quiz-server#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.3",
+    "prisma": "^7.10.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model categories {
+  category_id Int    @id @default(autoincrement())
+  name        String
+  quiz        quiz[]
+}
+
+model options {
+  option_id   Int        @id @default(autoincrement())
+  question_id Int?
+  content     String
+  correct     Boolean
+  questions   questions? @relation(fields: [question_id], references: [question_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_question")
+}
+
+model questions {
+  question_id Int       @id @default(autoincrement())
+  quiz_id     Int?
+  content     String
+  options     options[]
+  quiz        quiz?     @relation(fields: [quiz_id], references: [quiz_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_quiz")
+}
+
+model quiz {
+  quiz_id         Int         @id @default(autoincrement())
+  category_id     Int?
+  total_questions Int?
+  questions       questions[]
+  categories      categories? @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_category")
+  scores          scores[]
+}
+
+model scores {
+  score_id   Int      @id @default(autoincrement())
+  quiz_id    Int?
+  hits       Int?
+  percentage Decimal? @db.Decimal(3, 2)
+  quiz       quiz?    @relation(fields: [quiz_id], references: [quiz_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_quiz")
+}
