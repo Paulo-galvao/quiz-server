@@ -8,7 +8,7 @@ async function getAll(req: Request, res: Response) {
 
         res.status(200).json(question);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json(error); 
     }
 }
 

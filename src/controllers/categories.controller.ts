@@ -1,13 +1,12 @@
 import type { Request, Response } from "express";
 import { getAllCategories, getOneCategory } from "../services/categories.service";
-import { Category } from "../types/category";
 
 async function getAll(
     req: Request, 
-    res: Response<Category []| any>
+    res: Response
 ) {
     try {
-        const categories:Category[] = await getAllCategories();
+        const categories = await getAllCategories();
         res.status(200).json(categories);
     } catch (error) {
         res.status(500).json(error);

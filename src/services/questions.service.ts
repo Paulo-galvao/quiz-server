@@ -1,21 +1,32 @@
 import { prisma } from "../lib/prisma";
 
 async function getAllQuestions() {
-    const questions = prisma.questions.findMany();
-    return questions;
+    try {
+        const questions = prisma.questions.findMany();
+        return questions;
+    } catch (error) {
+        return error;
+    }
 }
 
 async function getOneQuestion(questionId: number) {
-    const question = prisma.questions.findUnique({
+    try {
+        const question = prisma.questions.findUnique({
         where: { question_id: questionId },
-        include: { options: true }
+        include: { options: true },
     });
 
     if(!question) {
         return { message: "No question for this Id"};
     }
-    
+
     return question;
+    
+    } catch (error) {
+        return error;
+    }
+    
+    
 }
 
 export {

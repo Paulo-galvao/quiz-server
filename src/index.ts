@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-
+import cors from "cors";
 
 import { 
     quizRouter, 
@@ -10,6 +10,8 @@ import {
 
 const PORT = 8000;
 const app = express();
+
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.json({ message: "Quiz Game!" });
