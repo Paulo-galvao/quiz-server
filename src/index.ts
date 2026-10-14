@@ -7,10 +7,12 @@ import {
     optionsRouter, 
     questionsRouter
 } from "./routes";
+import scoresRouter from "./routes/scores.routes";
 
 const PORT = 8000;
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -23,6 +25,7 @@ app.use("/categories", categoriesRouter);
 app.use("/options", optionsRouter);
 app.use("/quiz", quizRouter);
 app.use("/questions", questionsRouter);
+app.use("/scores", scoresRouter);
 
 /* Not Found */
 

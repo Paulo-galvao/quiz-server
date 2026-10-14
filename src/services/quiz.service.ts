@@ -38,8 +38,6 @@ async function getOneQuiz(quizId: number) {
         },
     });   
 
-    console.log(quiz);
-
     if(!quiz) {
         return { message: "No quiz for this Id"};
     }

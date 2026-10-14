@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
 import { getAllOptions, getOneOption } from "../services/options.service";
-import { Category } from "../types/category";
+
 
 async function getAll(
     req: Request, 
-    res: Response<Category []| any>
+    res: Response
 ) {
     try {
         const options = await getAllOptions();
